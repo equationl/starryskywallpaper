@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">星空动态壁纸</string>
+    <string name="app_name">Starry Sky Live WallPaper</string>
+    <string name="main_apply_wallpaper">Set wallpaper</string>
+    <string name="setting_random_generate_title">Random Generate</string>
+    <string name="setting_random_generate_subTitle">If turn on, will generate wallpaper with random star and meteor</string>
+    <string name="setting_star_num_title">Star Numbers</string>
+    <string name="setting_random_meteor_angle_title">Random Meteor Angle</string>
+    <string name="setting_random_meteor_angle_subTitle">If turn on, will generate meteor with random angle</string>
+    <string name="setting_meteor_angle_title">Meteor Angle</string>
+    <string name="setting_random_meteor_scaleTime_title">Random Generate Meteor Time</string>
+    <string name="setting_random_meteor_scaleTime_subTitle">If turn on, will generate meteor with random time</string>
+    <string name="setting_meteor_scaleTime_title">Generate Meteor Time</string>
+    <string name="setting_meteor_runningTime_title">Meteor Running Time</string>
+    <string name="setting_meteor_speed_title">Meteor Speed</string>
+    <string name="setting_meteor_length_title">Meteor Length (0 mean unlimited)</string>
+    <string name="setting_meteor_width_title">Meteor Width</string>
 </resources>

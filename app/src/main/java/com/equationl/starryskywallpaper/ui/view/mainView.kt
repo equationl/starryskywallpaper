@@ -13,7 +13,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.equationl.starryskywallpaper.R
 import com.equationl.starryskywallpaper.server.StarrySkyWallpaperServer
 
 @Composable
@@ -22,7 +24,9 @@ fun MainScreen() {
     val scrollState = rememberScrollState()
 
     Column(
-        Modifier.fillMaxSize().verticalScroll(scrollState),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -36,7 +40,7 @@ fun MainScreen() {
             },
             modifier = Modifier.padding(start = 8.dp)
         ) {
-            Text(text = "设置壁纸")
+            Text(text = stringResource(id = R.string.main_apply_wallpaper))
         }
     }
 }

@@ -8,11 +8,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.alorma.compose.settings.storage.datastore.rememberDataStoreBooleanSettingState
 import com.alorma.compose.settings.storage.datastore.rememberDataStoreFloatSettingState
 import com.alorma.compose.settings.ui.SettingsSlider
 import com.alorma.compose.settings.ui.SettingsSwitch
+import com.equationl.starryskywallpaper.R
 import com.equationl.starryskywallpaper.utills.*
 
 @Composable
@@ -35,10 +37,10 @@ fun MainSetting() {
         SettingsSwitch(
             state = isUsingRandom,
             title = {
-                Text(text = "随机生成")
+                Text(text = stringResource(id = R.string.setting_random_generate_title))
             },
             subtitle = {
-                Text(text = "开启后壁纸每次启动都会随机生成背景星空和流星")
+                Text(text = stringResource(id = R.string.setting_random_generate_subTitle))
             },
             icon = {
                 Icon(imageVector = Icons.Rounded.Quiz, contentDescription = null)
@@ -51,7 +53,7 @@ fun MainSetting() {
             state = starNum,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "星星数量")
+                    Text(text = stringResource(id = R.string.setting_star_num_title))
                     Text(text = starNum.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -66,10 +68,10 @@ fun MainSetting() {
         SettingsSwitch(
             state = isUsingMeteorRandomAngle,
             title = {
-                Text(text = "随机流星角度")
+                Text(text = stringResource(id = R.string.setting_random_meteor_angle_title))
             },
             subtitle = {
-                Text(text = "开启后流星划过的角度将每次都随机生成")
+                Text(text = stringResource(id = R.string.setting_random_meteor_angle_subTitle))
             },
             icon = {
                 Icon(imageVector = Icons.Rounded.Quiz, contentDescription = null)
@@ -80,7 +82,7 @@ fun MainSetting() {
             state = meteorAngle,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "流星划出角度")
+                    Text(text = stringResource(id = R.string.setting_meteor_angle_title))
                     Text(text = meteorAngle.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -96,10 +98,10 @@ fun MainSetting() {
         SettingsSwitch(
             state = isUsingMeteorRandomScaleTime,
             title = {
-                Text(text = "随机生成流星间隔时间")
+                Text(text = stringResource(id = R.string.setting_random_meteor_scaleTime_title))
             },
             subtitle = {
-                Text(text = "开启后生成流星的间隔时间将随机")
+                Text(text = stringResource(id = R.string.setting_random_meteor_scaleTime_subTitle))
             },
             icon = {
                 Icon(imageVector = Icons.Rounded.Quiz, contentDescription = null)
@@ -110,7 +112,7 @@ fun MainSetting() {
             state = meteorScaleTime,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "流星生成间隔时间")
+                    Text(text = stringResource(id = R.string.setting_meteor_scaleTime_title))
                     Text(text = meteorScaleTime.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -125,7 +127,7 @@ fun MainSetting() {
             state = meteorRunningTime,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "流星运行时间")
+                    Text(text = stringResource(id = R.string.setting_meteor_runningTime_title))
                     Text(text = meteorRunningTime.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -141,7 +143,7 @@ fun MainSetting() {
             state = meteorVelocity,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "流星速度")
+                    Text(text = stringResource(id = R.string.setting_meteor_speed_title))
                     Text(text = meteorVelocity.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -155,7 +157,7 @@ fun MainSetting() {
             state = meteorLength,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                    Text(text = "流星拖尾长度（0表示无限长）")
+                    Text(text = stringResource(id = R.string.setting_meteor_length_title))
                     Text(text = meteorLength.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },
@@ -169,7 +171,7 @@ fun MainSetting() {
             state = meteorStrokeWidth,
             title = {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                    Text(text = "流星宽度")
+                    Text(text = stringResource(id = R.string.setting_meteor_width_title))
                     Text(text = meteorStrokeWidth.value.toInt().toString(), modifier = Modifier.padding(end = 4.dp))
                 }
             },

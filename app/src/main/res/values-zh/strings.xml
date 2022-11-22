@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">星空动态壁纸</string>
+    <string name="main_apply_wallpaper">设置壁纸</string>
+    <string name="setting_random_generate_title">随机生成</string>
+    <string name="setting_random_generate_subTitle">开启后壁纸每次启动都会随机生成背景星空和流星</string>
+    <string name="setting_star_num_title">星星数量</string>
+    <string name="setting_random_meteor_angle_title">随机流星角度</string>
+    <string name="setting_random_meteor_angle_subTitle">开启后流星划过的角度将每次都随机生成</string>
+    <string name="setting_meteor_angle_title">流星划出角度</string>
+    <string name="setting_random_meteor_scaleTime_title">随机生成流星间隔时间</string>
+    <string name="setting_random_meteor_scaleTime_subTitle">开启后生成流星的间隔时间将随机</string>
+    <string name="setting_meteor_scaleTime_title">流星生成间隔时间</string>
+    <string name="setting_meteor_runningTime_title">流星运行时间</string>
+    <string name="setting_meteor_speed_title">流星速度</string>
+    <string name="setting_meteor_length_title">流星拖尾长度（0表示无限长）</string>
+    <string name="setting_meteor_width_title">流星宽度</string>
+</resources>
