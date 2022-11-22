@@ -33,7 +33,7 @@ class StarrySkyWallpaperServer : WallpaperService() {
 
         private fun continueDraw() {
             coroutineScope.launch {
-                drawStarrySky.startDraw(surfaceHolder)
+                drawStarrySky.startDraw(this@StarrySkyWallpaperServer, surfaceHolder)
             }
         }
 

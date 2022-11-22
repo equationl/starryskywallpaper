@@ -1,16 +1,18 @@
 package com.equationl.starryskywallpaper.ui.draw
 
+import android.content.Context
 import android.graphics.*
 import android.view.SurfaceHolder
 import androidx.compose.ui.geometry.Offset
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.floatPreferencesKey
+import com.alorma.compose.settings.storage.datastore.composeSettingsDataStore
+import com.equationl.starryskywallpaper.utills.*
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlin.math.*
 import kotlin.random.Random
-
-
-private const val meteorScaleTime = 500L  // 生成流星的间隔时间
-private const val meteorTime = 300  // 流星持续飞行时间
-
 
 class DrawStarrySky {
     private var isRunning = false
@@ -19,15 +21,23 @@ class DrawStarrySky {
         isRunning = false
     }
 
-    suspend fun startDraw(
-        holder: SurfaceHolder,
-        randomSeed: Long = 1L
-    ) {
+    suspend fun startDraw(context: Context, holder: SurfaceHolder) {
 
         isRunning = true
 
         // 初始化参数
-        val random = Random(randomSeed)
+        val isUsingRandom = context.composeSettingsDataStore.data.map { it[booleanPreferencesKey(isUsingRandomKey)] ?: false }.first()
+        val starNum = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(starNumKey)] ?: 20f }.first()
+        val meteorVelocity = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorVelocityKey)] ?: 10f}.first()
+        val meteorLength = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorLengthKey)] ?: 500f}.first()
+        val meteorStrokeWidth = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorStrokeWidthKey)] ?: 1f }.first()
+        val isUsingMeteorRandomAngle = context.composeSettingsDataStore.data.map { it[booleanPreferencesKey(isUsingMeteorRandomAngleKey)] ?: false }.first()
+        val meteorAngle = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorAngleKey)] ?: 45f }.first()
+        val isUsingMeteorRandomScaleTime = context.composeSettingsDataStore.data.map { it[booleanPreferencesKey(isUsingMeteorRandomScaleTimeKey)] ?: false }.first()
+        val meteorScaleTime = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorScaleTimeKey)] ?: 500f }.first()
+        val meteorRunningTime = context.composeSettingsDataStore.data.map { it[floatPreferencesKey(meteorRunningTimeKey)] ?: 300f }.first()
+
+        val random = Random(if (isUsingRandom) System.currentTimeMillis() else 1L)
         val paint = Paint()
         var canvasWidth = 0
         var canvasHeight = 0
@@ -40,7 +50,7 @@ class DrawStarrySky {
         // 背景缓存
         val bitmap = Bitmap.createBitmap(canvasWidth, canvasHeight, Bitmap.Config.ARGB_8888)
         // 绘制静态背景
-        drawFixedContent(Canvas(bitmap), random)
+        drawFixedContent(Canvas(bitmap), random, starNum = starNum.toInt())
 
         while (isRunning) {
 
@@ -49,8 +59,13 @@ class DrawStarrySky {
             val safeDistanceVertical = canvasHeight / 10
             val startX = random.nextInt(safeDistanceStandard, canvasWidth - safeDistanceStandard)
             val startY = random.nextInt(safeDistanceVertical, canvasHeight - safeDistanceVertical)
+            val meteorRadian: Double = if (isUsingMeteorRandomAngle) {
+                random.nextInt(0, 361) * PI / 180
+            } else {
+                meteorAngle * PI / 180
+            }
 
-            for (time in 0..meteorTime) {
+            for (time in 0..meteorRunningTime.toInt()) {
                 if (!isRunning) break
 
                 getCanvas(holder) { canvas ->
@@ -67,12 +82,16 @@ class DrawStarrySky {
                         time.toFloat(),
                         startX,
                         startY,
-                        paint
+                        paint,
+                        meteorVelocity = meteorVelocity,
+                        meteorLength = meteorLength,
+                        meteorStrokeWidth = meteorStrokeWidth,
+                        meteorRadian = meteorRadian
                     )
                 }
             }
 
-            delay(meteorScaleTime)
+            delay(if (isUsingMeteorRandomScaleTime) random.nextLong(0, 3000) else meteorScaleTime.toLong())
         }
     }
 
@@ -184,7 +203,6 @@ class DrawStarrySky {
                 currentEndY = startY + meteorVelocity * currentTime * 2 * sinAngle
             }
             else { // 已达到目标长度，直接用起点坐标加上目标长度即可得到终点坐标
-                currentLength = meteorLength
                 currentEndX = currentStartX + meteorLength * cosAngle
                 currentEndY = currentStartY + meteorLength * sinAngle
             }

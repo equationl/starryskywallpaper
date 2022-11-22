@@ -4,30 +4,39 @@ import android.app.WallpaperManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.equationl.starryskywallpaper.server.StarrySkyWallpaperServer
 
 @Composable
 fun MainScreen() {
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
     Column(
-        Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        Modifier.fillMaxSize().verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        Button(onClick = {
-            onClickSetWallPaper(context)
-        }) {
-            Text(text = "设置")
+        MainSetting()
+
+        Button(
+            onClick = {
+                onClickSetWallPaper(
+                    context
+                )
+            },
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            Text(text = "设置壁纸")
         }
     }
 }
