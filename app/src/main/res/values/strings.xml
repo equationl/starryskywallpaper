@@ -14,4 +14,6 @@
     <string name="setting_meteor_speed_title">Meteor Speed</string>
     <string name="setting_meteor_length_title">Meteor Length (0 mean unlimited)</string>
     <string name="setting_meteor_width_title">Meteor Width</string>
+
+    <string name="main_setting_permission_tip">If setting wallpaper is unresponsive, please try to allow permission to set live wallpaper</string>
 </resources>

@@ -3,7 +3,11 @@ package com.equationl.starryskywallpaper.server
 import android.service.wallpaper.WallpaperService
 import android.view.SurfaceHolder
 import com.equationl.starryskywallpaper.ui.draw.DrawStarrySky
-import kotlinx.coroutines.*
+import com.equationl.starryskywallpaper.utills.Permission
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
 
 
 class StarrySkyWallpaperServer : WallpaperService() {
@@ -15,6 +19,7 @@ class StarrySkyWallpaperServer : WallpaperService() {
     inner class WallpaperEngine : WallpaperService.Engine() {
 
         override fun onSurfaceCreated(holder: SurfaceHolder?) {
+            Permission.hasPermission = true
             super.onSurfaceCreated(holder)
         }
 

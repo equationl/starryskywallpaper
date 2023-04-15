@@ -1,11 +1,22 @@
 package com.equationl.starryskywallpaper.ui.view
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.AutoMode
+import androidx.compose.material.icons.rounded.HourglassTop
+import androidx.compose.material.icons.rounded.Pin
+import androidx.compose.material.icons.rounded.Quiz
+import androidx.compose.material.icons.rounded.Schedule
+import androidx.compose.material.icons.rounded.Speed
+import androidx.compose.material.icons.rounded.Straighten
+import androidx.compose.material.icons.rounded.WidthNormal
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -15,18 +26,27 @@ import com.alorma.compose.settings.storage.datastore.rememberDataStoreFloatSetti
 import com.alorma.compose.settings.ui.SettingsSlider
 import com.alorma.compose.settings.ui.SettingsSwitch
 import com.equationl.starryskywallpaper.R
-import com.equationl.starryskywallpaper.utills.*
+import com.equationl.starryskywallpaper.utills.isUsingMeteorRandomAngleKey
+import com.equationl.starryskywallpaper.utills.isUsingMeteorRandomScaleTimeKey
+import com.equationl.starryskywallpaper.utills.isUsingRandomKey
+import com.equationl.starryskywallpaper.utills.meteorAngleKey
+import com.equationl.starryskywallpaper.utills.meteorLengthKey
+import com.equationl.starryskywallpaper.utills.meteorRunningTimeKey
+import com.equationl.starryskywallpaper.utills.meteorScaleTimeKey
+import com.equationl.starryskywallpaper.utills.meteorStrokeWidthKey
+import com.equationl.starryskywallpaper.utills.meteorVelocityKey
+import com.equationl.starryskywallpaper.utills.starNumKey
 
 @Composable
 fun MainSetting() {
-    val isUsingRandom = rememberDataStoreBooleanSettingState(key = isUsingRandomKey, defaultValue = false)
-    val starNum = rememberDataStoreFloatSettingState(key = starNumKey, defaultValue = 20f)
-    val meteorVelocity = rememberDataStoreFloatSettingState(key = meteorVelocityKey, defaultValue = 10f)
+    val isUsingRandom = rememberDataStoreBooleanSettingState(key = isUsingRandomKey, defaultValue = true)
+    val starNum = rememberDataStoreFloatSettingState(key = starNumKey, defaultValue = 50f)
+    val meteorVelocity = rememberDataStoreFloatSettingState(key = meteorVelocityKey, defaultValue = 20f)
     val meteorLength = rememberDataStoreFloatSettingState(key = meteorLengthKey, defaultValue = 500f)
     val meteorStrokeWidth = rememberDataStoreFloatSettingState(key = meteorStrokeWidthKey, defaultValue = 1f)
     val isUsingMeteorRandomAngle = rememberDataStoreBooleanSettingState(key = isUsingMeteorRandomAngleKey, defaultValue = false)
     val meteorAngle = rememberDataStoreFloatSettingState(key = meteorAngleKey, defaultValue = 45f)
-    val isUsingMeteorRandomScaleTime = rememberDataStoreBooleanSettingState(key = isUsingMeteorRandomScaleTimeKey, defaultValue = false)
+    val isUsingMeteorRandomScaleTime = rememberDataStoreBooleanSettingState(key = isUsingMeteorRandomScaleTimeKey, defaultValue = true)
     val meteorScaleTime = rememberDataStoreFloatSettingState(key = meteorScaleTimeKey, defaultValue = 500f)
     val meteorRunningTime = rememberDataStoreFloatSettingState(key = meteorRunningTimeKey, defaultValue = 300f)
 

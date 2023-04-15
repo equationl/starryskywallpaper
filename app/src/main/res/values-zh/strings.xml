@@ -15,4 +15,6 @@
     <string name="setting_meteor_speed_title">流星速度</string>
     <string name="setting_meteor_length_title">流星拖尾长度（0表示无限长）</string>
     <string name="setting_meteor_width_title">流星宽度</string>
+    \
+    <string name="main_setting_permission_tip">如果设置壁纸无响应，请尝试允许设置动态壁纸权限</string>
 </resources>
